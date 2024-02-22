@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledSpan = styled.span`
-  color: ${(props) => props.fontColor};
+  color: ${(props) => props.fontcolor};
   font-size: ${(props) => props.fontSize ?? "14px"};
   line-height: ${(props) => props.lineHeight ?? "20px"};
   font-weight: 400;

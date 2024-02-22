@@ -8,6 +8,7 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 import { removeLocalStorageItem, setLocalStorageItem } from "./utils/localStorageHelper";
 import Header from "./components/Header";
 import store from "./store/TodoStore";
+import Tasks from "./components/Tasks";
 
 function App() {
   const [todo, setTodo] = useState("");
@@ -49,23 +50,7 @@ function App() {
             element={
               <>
                 <Header onSignOut={handleSignOut} />
-                <p>React Redux Todo App</p>
-                <form onSubmit={handleSubmitTodo}>
-                  <input placeholder="Type a task" value={todo} onChange={(e) => setTodo(e.target.value)} />
-                  <button type="submit">Add To Do</button>
-                </form>
-
-                <ul className="allTodo">
-                  {todosList &&
-                    todosList.map((td) => {
-                      return (
-                        <li key={td.id}>
-                          <span>{td.todo}</span>
-                          <button onClick={() => handleRemoveTodo(td)}>Delete</button>
-                        </li>
-                      );
-                    })}
-                </ul>
+                <Tasks handleSubmitTodo={handleSubmitTodo} data={todosList} handleRemoveTodo={handleRemoveTodo} todo={todo} setTodo={setTodo} />
               </>
             }
             path="/"
