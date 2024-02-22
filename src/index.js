@@ -4,6 +4,9 @@ import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import store from "./store/TodoStore";
+import { LoadTodosAction } from "./actions/TodoActions";
+
+store.dispatch(LoadTodosAction());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

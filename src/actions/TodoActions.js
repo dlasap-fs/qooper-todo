@@ -1,3 +1,5 @@
+import { getLocalStorageItem } from "../utils/localStorageHelper";
+
 export const AddTodoAction = (todo) => (dispatch, getState) => {
   const {
     Todo: { todos },
@@ -25,13 +27,12 @@ export const RemoveTodoAction = (todo) => (dispatch) => {
 };
 
 export const LoadTodosAction = () => (dispatch) => {
-  const storedTodos = localStorage.getItem("todos");
-  console.log("%c  storedTodos:", "color: #0e93e0;background: #aaefe5;", storedTodos);
-  // if (storedTodos) {
-  //   const todos = JSON.parse(storedTodos);
-  //   dispatch({
-  //     type: "LOAD_TODOS",
-  //     payload: todos,
-  //   });
-  // }
+  const storedTodos = getLocalStorageItem("todos");
+  const todosData = JSON.parse(storedTodos);
+  if (storedTodos && todosData?.todos?.length > 0) {
+    dispatch({
+      type: "LOAD_TODOS",
+      payload: todosData,
+    });
+  }
 };
