@@ -10,6 +10,9 @@ const initialState = {};
 
 const middleware = [thunk];
 
+/**
+ * Store for managing the application state.
+ */
 const store = createStore(reducer, initialState, applyMiddleware(...middleware));
 
 export default store;

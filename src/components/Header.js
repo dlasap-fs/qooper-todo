@@ -3,6 +3,10 @@ import styled from "styled-components";
 import { StyledButton } from "./StyledComponents/StyledButton";
 import { StyledSpan } from "./StyledComponents/StyledSpan";
 
+/**
+ * A styled Container for Header.
+ * @component
+ */
 const HeaderContainer = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -11,6 +15,18 @@ const HeaderContainer = styled.div`
   border: solid 1px var(--gray-border);
   padding: 16px;
 `;
+
+/**
+ * Component for Header of the app with Logout and user details
+ *
+ * @props.onSignOut  - Triggers function when LOGOUT button is clicked
+ * @component
+ * @example
+ * const handleSignOut =()=> = sampleFunction()
+ * return (
+ *   <Header onSignOut={handleSignOut} />
+ * )
+ */
 
 export default function Header({ onSignOut }) {
   const { firstName = "" } = JSON.parse(getLocalStorageItem("user"));

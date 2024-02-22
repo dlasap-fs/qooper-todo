@@ -1,5 +1,12 @@
 import { getLocalStorageItem, setLocalStorageItem } from "../utils/localStorageHelper";
 
+/**
+ * Reducer for managing the todo list state.
+ * @param {Object} state - The current state.
+ * @param {Object} action - The action to be performed.
+ * @returns {Object} The new state.
+ */
+
 export const TodoReducer = (state = { todos: [] }, action) => {
   switch (action.type) {
     case "ADD_TODO":

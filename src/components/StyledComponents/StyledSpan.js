@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+/**
+ * A reusable span component.
+ * @component
+ * @param {Object} props - The component props.
+ * @params [fontcolor, fontsize, lineheight, margin, alignSelf, padding,      fontFamilyy] - for corresponding CSS customization
+ */
 export const StyledSpan = styled.span`
   color: ${(props) => props.fontcolor};
   font-size: ${(props) => props.fontSize ?? "14px"};

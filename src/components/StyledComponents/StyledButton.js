@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+/**
+ * A reusable button component.
+ * @component
+ * @params [width, height, backgroundcolor, fontcolor] - for corresponding CSS customization
+ */
 export const StyledButton = styled.button`
   border: none;
   width: ${(props) => props.width};

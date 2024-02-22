@@ -10,6 +10,12 @@ import Header from "./components/Header";
 import store from "./store/TodoStore";
 import Tasks from "./components/Tasks";
 
+/**
+ * App Base Component for To Do App
+ *
+ * @component
+ * returns Base App with Routes with Sign In and Default Page for Task
+ */
 function App() {
   const [todo, setTodo] = useState("");
   const dispatch = useDispatch();

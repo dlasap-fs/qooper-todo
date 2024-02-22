@@ -3,12 +3,21 @@ import { StyledSpan } from "./StyledComponents/StyledSpan";
 import CloseTaskButton from "./CloseButton";
 import { useState } from "react";
 
+/**
+ * A styled Container Div for Tasks page.
+ * @component
+ */
 const TasksContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
+
+/**
+ * A styled Form for Tasks page.
+ * @component
+ */
 const TaskFormContainer = styled.form`
   display: flex;
   justify-content: center;
@@ -19,6 +28,10 @@ const TaskFormContainer = styled.form`
   margin-bottom: 32px;
 `;
 
+/**
+ * A styled input for Tasks page.
+ * @component
+ */
 const TaskInput = styled.input`
   margin: 0;
   width: 100%;
@@ -31,6 +44,10 @@ const TaskInput = styled.input`
   margin: ${(props) => props.margin};
 `;
 
+/**
+ * A styled Header for Tasks page.
+ * @component
+ */
 const TaskHeader = styled.h3`
   color: var(--black-txt);
   font-weight: 600;
@@ -41,14 +58,27 @@ const TaskHeader = styled.h3`
   margin: 0px;
 `;
 
+/**
+ * A styled Div for Tasks page when no Data is available.
+ * @component
+ */
 const NoTask = styled.div`
   color: var(--purple-txt);
 `;
 
+/**
+ * A styled ul for Tasks page.
+ * @component
+ */
 const UnorderedList = styled.ul`
   margin: 24px 0px 24px 0px;
   padding: 0px;
 `;
+
+/**
+ * A styled div card for Tasks page.
+ * @component
+ */
 const StyledListCard = styled.div`
   margin: 0px;
   padding: ${(props) => props.padding ?? "24px"};
@@ -65,6 +95,10 @@ const StyledListCard = styled.div`
   }
 `;
 
+/**
+ * A styled input during edits for Tasks page.
+ * @component
+ */
 const EditInput = styled.input`
   margin: 0;
   width: 90%;
@@ -77,6 +111,34 @@ const EditInput = styled.input`
   margin: ${(props) => props.margin};
 `;
 
+/**
+ * Component for displaying, adding, removing and editing To Do data.
+ *
+ * @param {Function} handleSubmitTodo  - Triggers function when LOGIN button is clicked
+ * @param {Object}   data              - To do Data
+ * @param {Function} handleRemoveTodo  - Function for removing Todo
+ * @param {Record<string,any>} todo    - value for current todo input
+ * @param {Function} setTodo           - Function for setting todo input
+ * @param {Function} handleEditTodo    - Edit To do Function
+ * @component
+ * @example
+ * const handleSubmitTodo =()=> = sampleFunction()
+ * const handleRemoveTodo =()=> = sampleFunction()
+ * const handleEditTodo =()=> = sampleFunction()
+ * const setTodo = () => sampleFunction()
+ * const todosList = [...todoData]
+ *
+ * return (
+ *   <Tasks
+ *   handleSubmitTodo={handleSubmitTodo}
+ *   data={todosList}
+ *   handleRemoveTodo={handleRemoveTodo}
+ *   todo={todo}
+ *   setTodo={setTodo}
+ *   handleEditTodo={handleEditTodo}
+ *   />
+ * )
+ */
 export default function Tasks({ handleSubmitTodo, data, handleRemoveTodo, todo, setTodo, handleEditTodo }) {
   const [selectedTodo, setSelectedTodo] = useState(null);
 

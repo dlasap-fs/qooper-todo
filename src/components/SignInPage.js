@@ -5,6 +5,10 @@ import styled from "styled-components";
 import { StyledButton } from "./StyledComponents/StyledButton";
 import { StyledSpan } from "./StyledComponents/StyledSpan";
 
+/**
+ * A styled Container for Sign In page.
+ * @component
+ */
 const SignInPageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -13,6 +17,10 @@ const SignInPageContainer = styled.div`
   height: 100%;
 `;
 
+/**
+ * A styled Header for Sign In page.
+ * @component
+ */
 const SignInPageHeader = styled.h2`
   color: var(--black-txt);
   font-weight: 600;
@@ -21,6 +29,10 @@ const SignInPageHeader = styled.h2`
   margin-bottom: 24px;
 `;
 
+/**
+ * A styled Form for Sign In page.
+ * @component
+ */
 const SignInForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -29,6 +41,10 @@ const SignInForm = styled.form`
   width: 312px;
 `;
 
+/**
+ * A styled input for Sign In page.
+ * @component
+ */
 const SignInInput = styled.input`
   margin: 0;
   width: 280px;
@@ -41,6 +57,17 @@ const SignInInput = styled.input`
   margin: ${(props) => props.margin};
 `;
 
+/**
+ * Component for showing Sign In Page to the user.
+ *
+ * @props.onSignIn  - Triggers function when LOGIN button is clicked
+ * @component
+ * @example
+ * const handleSignIn =()=> = sampleFunction()
+ * return (
+ *   <SignIn onSignIn={handleSignIn} />
+ * )
+ */
 export default function SignIn({ onSignIn }) {
   const user = JSON.parse(getLocalStorageItem("user"));
 

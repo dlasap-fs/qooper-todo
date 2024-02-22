@@ -1,5 +1,10 @@
 import { getLocalStorageItem } from "../utils/localStorageHelper";
 
+/**
+ * Action creator for adding a todo.
+ * @param {Object} todo - The todo item to add.
+ * @returns {null} Dispatches ADD_TODO action.
+ */
 export const AddTodoAction = (todo) => (dispatch, getState) => {
   const {
     Todo: { todos },
@@ -19,6 +24,11 @@ export const AddTodoAction = (todo) => (dispatch, getState) => {
   }
 };
 
+/**
+ * Action creator for removing a todo.
+ * @param {Object} todo - The todo item to add.
+ * @returns {null} Dispatches REMOVE_TODO action.
+ */
 export const RemoveTodoAction = (todo) => (dispatch) => {
   if (!todo) return;
 
@@ -28,6 +38,11 @@ export const RemoveTodoAction = (todo) => (dispatch) => {
   });
 };
 
+/**
+ * Action creator for editing a todo.
+ * @param {Object} todo - The todo item to add.
+ * @returns {null} Dispatches EDIT_TODO action.
+ */
 export const EditTodoAction = (todo) => (dispatch) => {
   if (!todo) return;
 
@@ -37,6 +52,10 @@ export const EditTodoAction = (todo) => (dispatch) => {
   });
 };
 
+/**
+ * Load Todo data whenever app starts up
+ * @returns {null} Dispatches LOAD_TODOS action.
+ */
 export const LoadTodosAction = () => (dispatch) => {
   const storedTodos = getLocalStorageItem("todos");
   const user = JSON.parse(getLocalStorageItem("user"));
