@@ -7,12 +7,14 @@ export const AddTodoAction = (todo) => (dispatch, getState) => {
 
   if (!todo) return;
 
-  const hasTodo = todos.some((i) => i?.todo === todo);
+  const user = JSON.parse(getLocalStorageItem("user"));
+
+  const hasTodo = todos.some((i) => i?.todo === todo && i?.owner === user?.userName);
 
   if (!hasTodo && todo !== "") {
     dispatch({
       type: "ADD_TODO",
-      payload: { id: todo, todo },
+      payload: { id: todo, todo, owner: user?.userName },
     });
   }
 };
@@ -28,11 +30,15 @@ export const RemoveTodoAction = (todo) => (dispatch) => {
 
 export const LoadTodosAction = () => (dispatch) => {
   const storedTodos = getLocalStorageItem("todos");
+  const user = JSON.parse(getLocalStorageItem("user"));
+
   const todosData = JSON.parse(storedTodos);
-  if (storedTodos && todosData?.todos?.length > 0) {
+  if (storedTodos && todosData?.todos?.length > 0 && user?.userName) {
     dispatch({
       type: "LOAD_TODOS",
-      payload: todosData,
+      payload: {
+        todos: todosData?.todos?.filter((td) => td.owner === user?.userName),
+      },
     });
   }
 };

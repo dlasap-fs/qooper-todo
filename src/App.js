@@ -9,7 +9,6 @@ import { setLocalStorageItem } from "./utils/localStorageHelper";
 
 function App() {
   const [todo, setTodo] = useState("");
-  const [isSignedIn, setIsSignedIn] = useState(false);
   const dispatch = useDispatch();
 
   const TodoState = useSelector((state) => state.Todo);
@@ -29,8 +28,8 @@ function App() {
   };
 
   const handleSignIn = (user) => {
+    if (!user) return;
     setLocalStorageItem("user", JSON.stringify(user));
-    setIsSignedIn(true);
   };
 
   return (
