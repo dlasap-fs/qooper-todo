@@ -119,7 +119,7 @@ export default function SignIn({ onSignIn }) {
 
   return (
     <SignInPageContainer>
-      <SignInPageHeader>Login in your account</SignInPageHeader>
+      <SignInPageHeader>Login to your account</SignInPageHeader>
       <SignInForm onSubmit={handleSignIn}>
         <SignInInput type="text" placeholder="Username" id="userName" value={userDetails.userName} onChange={handleChangeInput} />
         {userDetails.userName.trim() === "" && (

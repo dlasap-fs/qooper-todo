@@ -23,7 +23,7 @@ test("Renders Application", () => {
       </Provider>
     </BrowserRouter>
   );
-  const loginHeader = screen.getByText(/Login in your account/i);
+  const loginHeader = screen.getByText(/Login to your account/i);
   expect(loginHeader).toBeInTheDocument();
 });
 
@@ -35,8 +35,6 @@ test("Login displays error messages when trying to login without sign in data", 
       </Provider>
     </BrowserRouter>
   );
-  const loginHeader = screen.getByText(/Login in your account/i);
-  expect(loginHeader).toBeInTheDocument();
 
   const signInButton = screen.getByText("LOGIN");
 
