@@ -46,7 +46,7 @@ const NoTask = styled.div`
 `;
 
 const UnorderedList = styled.ul`
-  margin: 24px 0px 0px 0px;
+  margin: 24px 0px 24px 0px;
   padding: 0px;
 `;
 const StyledListCard = styled.div`
@@ -59,11 +59,15 @@ const StyledListCard = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const EditInput = styled.input`
   margin: 0;
-  width: 100%;
+  width: 90%;
   height: 8px;
   font-size: 14px;
   letter-spacing: 0.1px;

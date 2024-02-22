@@ -103,6 +103,7 @@ export default function SignIn({ onSignIn }) {
             fontColor="var(--red-txt)"
             lineHeight="11.72px"
             fontSize="10px"
+            fontcolor="var(--red-txt)"
           >
             {errors.userName}
           </StyledSpan>
@@ -124,6 +125,7 @@ export default function SignIn({ onSignIn }) {
             fontColor="var(--red-txt)"
             lineHeight="11.72px"
             fontSize="10px"
+            fontcolor="var(--red-txt)"
           >
             {errors.firstName}
           </StyledSpan>
