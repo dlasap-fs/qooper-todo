@@ -2,14 +2,16 @@ import { useState } from "react";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AddTodoAction, RemoveTodoAction } from "./actions/TodoActions";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import SignIn from "./components/SignInPage";
 import PrivateRoutes from "./utils/PrivateRoutes";
-import { setLocalStorageItem } from "./utils/localStorageHelper";
+import { removeLocalStorageItem, setLocalStorageItem } from "./utils/localStorageHelper";
+import Header from "./components/Header";
 
 function App() {
   const [todo, setTodo] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const TodoState = useSelector((state) => state.Todo);
 
@@ -32,6 +34,11 @@ function App() {
     setLocalStorageItem("user", JSON.stringify(user));
   };
 
+  const handleSignOut = () => {
+    navigate("/signIn");
+    removeLocalStorageItem("user");
+  };
+
   return (
     <div className="App">
       <Routes>
@@ -39,6 +46,7 @@ function App() {
           <Route
             element={
               <>
+                <Header onSignOut={handleSignOut} />
                 <p>React Redux Todo App</p>
                 <form onSubmit={handleSubmitTodo}>
                   <input placeholder="Type a task" value={todo} onChange={(e) => setTodo(e.target.value)} />
