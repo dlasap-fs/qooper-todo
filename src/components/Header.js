@@ -20,7 +20,7 @@ export default function Header({ onSignOut }) {
       <StyledSpan color="var(--black-txt)" margin="0px 32px">
         Welcome, {firstName}
       </StyledSpan>
-      <StyledButton backgroundColor="var(--blue-btn)" fontColor="white" onClick={() => onSignOut()}>
+      <StyledButton height="45px" width="118px" backgroundColor="var(--blue-btn)" fontColor="white" onClick={() => onSignOut()}>
         LOGOUT
       </StyledButton>
     </HeaderContainer>
