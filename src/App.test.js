@@ -1,8 +1,51 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store/TodoStore";
+import userEvent from "@testing-library/user-event";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+jest.mock("react-redux", () => ({
+  ...jest.requireActual("react-redux"),
+  useDispatch: jest.fn(),
+}));
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: jest.fn(),
+}));
+
+test("Renders Application", () => {
+  render(
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  );
+  const loginHeader = screen.getByText(/Login in your account/i);
+  expect(loginHeader).toBeInTheDocument();
+});
+
+test("Login displays error messages when trying to login without sign in data", () => {
+  render(
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  );
+  const loginHeader = screen.getByText(/Login in your account/i);
+  expect(loginHeader).toBeInTheDocument();
+
+  const signInButton = screen.getByText("LOGIN");
+
+  userEvent.click(signInButton);
+
+  const userNameErrorText = screen.getByText("User name is required");
+  const firstNameErrorText = screen.getByText("First name is required");
+
+  expect(signInButton).toBeInTheDocument();
+  expect(userNameErrorText).toBeInTheDocument();
+  expect(firstNameErrorText).toBeInTheDocument();
 });

@@ -135,7 +135,6 @@ export default function SignIn({ onSignIn }) {
             {errors.userName}
           </StyledSpan>
         )}
-
         <SignInInput
           margin="16px 0px 0px 0px"
           type="text"
@@ -157,7 +156,6 @@ export default function SignIn({ onSignIn }) {
             {errors.firstName}
           </StyledSpan>
         )}
-
         <SignInInput
           margin="16px 0px 24px 0px"
           type="text"
@@ -166,7 +164,7 @@ export default function SignIn({ onSignIn }) {
           value={userDetails.lastName}
           onChange={handleChangeInput}
         />
-        <StyledButton width="312px" height="45px" backgroundcolor="var(--blue-btn)" fontcolor="white" button="submit">
+        <StyledButton width="312px" height="45px" backgroundcolor="var(--blue-btn)" fontcolor="white" button="submit" data-testid="signInBtn">
           LOGIN
         </StyledButton>
       </SignInForm>

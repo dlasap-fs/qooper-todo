@@ -131,11 +131,11 @@ const EditInput = styled.input`
  * return (
  *   <Tasks
  *   handleSubmitTodo={handleSubmitTodo}
- *   data={todosList}
  *   handleRemoveTodo={handleRemoveTodo}
- *   todo={todo}
- *   setTodo={setTodo}
  *   handleEditTodo={handleEditTodo}
+ *   setTodo={setTodo}
+ *   data={todosList}
+ *   todo={todo}
  *   />
  * )
  */
@@ -148,7 +148,7 @@ export default function Tasks({ handleSubmitTodo, data, handleRemoveTodo, todo, 
     }
   };
   return (
-    <TasksContainer>
+    <TasksContainer data-testid="tasksComponent">
       <TaskFormContainer>
         <TaskInput
           placeholder="Type a task and press Enter to add"
