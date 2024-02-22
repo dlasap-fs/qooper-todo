@@ -55,6 +55,7 @@ const SignInInput = styled.input`
   font-weight: 400;
   padding: 12px 16px;
   margin: ${(props) => props.margin};
+  border: ${(props) => props.border};
 `;
 
 /**
@@ -121,7 +122,14 @@ export default function SignIn({ onSignIn }) {
     <SignInPageContainer>
       <SignInPageHeader>Login to your account</SignInPageHeader>
       <SignInForm onSubmit={handleSignIn}>
-        <SignInInput type="text" placeholder="Username" id="userName" value={userDetails.userName} onChange={handleChangeInput} />
+        <SignInInput
+          type="text"
+          placeholder="Username"
+          id="userName"
+          value={userDetails.userName}
+          onChange={handleChangeInput}
+          border={errors.userName && userDetails.userName.trim() === "" && "solid 1px var(--red-txt)"}
+        />
         {userDetails.userName.trim() === "" && (
           <StyledSpan
             padding="0px 0px 0px 16px"
@@ -142,6 +150,7 @@ export default function SignIn({ onSignIn }) {
           id="firstName"
           value={userDetails.firstName}
           onChange={handleChangeInput}
+          border={errors.firstName && userDetails.firstName.trim() === "" && "solid 1px var(--red-txt)"}
         />
         {userDetails.firstName.trim() === "" && (
           <StyledSpan
