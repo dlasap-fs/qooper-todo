@@ -1,12 +1,13 @@
 import { useState } from "react";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { AddTodoAction, RemoveTodoAction } from "./actions/TodoActions";
+import { AddTodoAction, LoadTodosAction, RemoveTodoAction } from "./actions/TodoActions";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import SignIn from "./components/SignInPage";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import { removeLocalStorageItem, setLocalStorageItem } from "./utils/localStorageHelper";
 import Header from "./components/Header";
+import store from "./store/TodoStore";
 
 function App() {
   const [todo, setTodo] = useState("");
@@ -32,10 +33,11 @@ function App() {
   const handleSignIn = (user) => {
     if (!user) return;
     setLocalStorageItem("user", JSON.stringify(user));
+    store.dispatch(LoadTodosAction());
   };
 
   const handleSignOut = () => {
-    navigate("/signIn");
+    navigate("/signIn", { replace: true });
     removeLocalStorageItem("user");
   };
 

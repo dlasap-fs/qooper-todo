@@ -71,10 +71,10 @@ export default function SignIn({ onSignIn }) {
           }}
         >
           <input placeholder="Username" id="userName" value={userDetails.userName} onChange={handleChangeInput} />
-          <span style={{ color: "red" }}>{errors.userName}</span>
+          {userDetails.userName.trim() === "" && <span style={{ color: "red" }}>{errors.userName}</span>}
 
           <input placeholder="First Name" id="firstName" value={userDetails.firstName} onChange={handleChangeInput} />
-          <span style={{ color: "red" }}>{errors.firstName}</span>
+          {userDetails.firstName.trim() === "" && <span style={{ color: "red" }}>{errors.firstName}</span>}
 
           <input placeholder="Last Name" id="lastName" value={userDetails.lastName} onChange={handleChangeInput} />
           <button button="submit">LOGIN</button>
