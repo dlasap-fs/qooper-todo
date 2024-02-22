@@ -2,9 +2,10 @@ import { useState } from "react";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { AddTodoAction, RemoveTodoAction } from "./actions/TodoActions";
-import { Router, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import SignIn from "./components/SignInPage";
 import PrivateRoutes from "./utils/PrivateRoutes";
+import { setLocalStorageItem } from "./utils/localStorageHelper";
 
 function App() {
   const [todo, setTodo] = useState("");
@@ -27,7 +28,8 @@ function App() {
     clearField();
   };
 
-  const handleSignIn = () => {
+  const handleSignIn = (user) => {
+    setLocalStorageItem("user", JSON.stringify(user));
     setIsSignedIn(true);
   };
 
@@ -59,11 +61,11 @@ function App() {
             }
             path="/"
             exact
-          ></Route>
+          />
           <Route path="*" element={<>Page not found.</>} />
-          <Route path="/signIn" element={<Navigate to="/" />} />
         </Route>
         <Route element={<SignIn onSignIn={handleSignIn} />} path="/signIn" exact />
+        <Route path="*" element={<>Page not found.</>} />
         <Route path="*" element={<Navigate to="/signIn" />} />
       </Routes>
     </div>
