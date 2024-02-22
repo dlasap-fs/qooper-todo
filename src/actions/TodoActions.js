@@ -28,6 +28,15 @@ export const RemoveTodoAction = (todo) => (dispatch) => {
   });
 };
 
+export const EditTodoAction = (todo) => (dispatch) => {
+  if (!todo) return;
+
+  dispatch({
+    type: "EDIT_TODO",
+    payload: todo,
+  });
+};
+
 export const LoadTodosAction = () => (dispatch) => {
   const storedTodos = getLocalStorageItem("todos");
   const user = JSON.parse(getLocalStorageItem("user"));

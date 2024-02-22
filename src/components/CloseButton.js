@@ -6,6 +6,7 @@ const CloseButtonContainer = styled.div`
   width: 24px;
   height: 24px;
   border-radius: 50px;
+  margin-left: 16px;
 
   &:hover {
     cursor: pointer;
